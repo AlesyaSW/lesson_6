@@ -2,7 +2,7 @@ from datetime import time
 
 def test_dark_theme():
     current_time = time(hour=23)
-    if time(22) <= current_time <= time(6):
+    if time(hour=6) <= current_time <= time(hour=22):
         is_dark_theme = True
     else:
         is_dark_theme = False
@@ -15,7 +15,7 @@ def test_dark_theme_by_time_and_user_choice():
 
     if dark_theme_enabled_by_user == True:
         is_dark_theme = True
-    elif time(22) <= current_time <= time(6):
+    elif time(hour=6) <= current_time <= time(hour=22):
         is_dark_theme = True
     else:
         is_dark_theme = False
@@ -65,13 +65,13 @@ def transform_text(func, *args):
     return txt
 
 def open_browser(browser_name):
-    actual_result = None
+    actual_result = transform_text(open_browser, browser_name)
     assert actual_result == "Open Browser [Chrome]"
 
 def go_to_companyname_homepage(page_url):
-    actual_result = None
+    actual_result = transform_text(go_to_companyname_homepage, page_url)
     assert actual_result == "Go To Companyname Homepage [https://companyname.com]"
 
 def find_registration_button_on_login_page(page_url, button_text):
-    actual_result = None
+    actual_result = transform_text(find_registration_button_on_login_page, page_url, button_text)
     assert actual_result == "Find Registration Button On Login Page [https://companyname.com/login, Register]"
